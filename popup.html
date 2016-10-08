@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+	<script>
+	var app=angular.module("myAPP",[]);
+
+	app.controller("myCtrl",function($scope,$window){
+		$scope.table=$window.table;
+		console.log($scope.table);
+	});
+	</script>
+	<div ng-app="myAPP" ng-controller="myCtrl">
+		<span>{{table}}</span>
+	</div>
+</body>
+</html>
