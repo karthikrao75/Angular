@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en-US">
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
@@ -12,8 +11,17 @@ table{
 th{
 	background-color: #D2B4DE;
 }
-tr:nth-child(even) {background: #ECF0F1}
-tr:nth-child(odd) {background: ##FDFEFE}
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
 </style>
 </head>
 <body>
@@ -22,7 +30,7 @@ tr:nth-child(odd) {background: ##FDFEFE}
 	var app=angular.module("myAPP",['ngSanitize']);
 
 	app.controller("myCtrl",function($scope,$window){
-		$scope.json={"INCIDENTS":[{"Incident Number":"INC01","Incident Priority": "priority 3","Day's Open":"192","Assigned To":"karthik01"},{"Incident Number":"INC02","Incident Priority": "priority 4","Day's Open":"78","Assigned To":"karthik02"},{"Incident Number":"INC03","Incident Priority": "priority 2","Day's Open":"91","Assigned To":"karthik03"},{"Incident Number":"INC04","Incident Priority": "priority 1","Day's Open":"19","Assigned To":"karthik)04"}],"toAddress":["karthik","srikanth"]};
+		$scope.json={"INCIDENTS":[{"Incident Number":"INC01","Incident Priority": "priority 3","Day's Open":"192","Assigned To":"karthik01"},{"Incident Number":"INC02","Incident Priority": "priority 4","Day's Open":"78","Assigned To":"karthik02"},{"Incident Number":"INC03","Incident Priority": "priority 2","Day's Open":"91","Assigned To":"karthik03"},{"Incident Number":"INC04","Incident Priority": "priority 1","Day's Open":"19","Assigned To":"karthik04"}],"toAddress":["karthik","srikanth"]};
 
 		$scope.submit=function(){
 			$scope.incidents=$scope.json.INCIDENTS;
@@ -46,8 +54,9 @@ tr:nth-child(odd) {background: ##FDFEFE}
 			});
 			$scope.table=$scope.table+"</tbody></table>";
 
-			var $popup = $window.open("Popup.html", "popup", "width=250,height=100,left=10,top=150");
-			$popup.table=$scope.table;
+
+			var $popup = $window.open("Popup.html","popup", "width=750,height=500,left=10,top=150");
+			$popup.table = $scope.table;
 
 		};
 
