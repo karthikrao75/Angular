@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+<style>
+table{
+	border: 1px solid black;
+}
+th{
+	background-color: #D2B4DE;
+}
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
 <body>
 	<script>
-	var app=angular.module("myAPP",[]);
+	var app=angular.module("myAPP",['ngSanitize']);
 
 	app.controller("myCtrl",function($scope,$window){
-		$scope.table=$window.table;
-		console.log($scope.table);
+		$scope.table = $window.table;
+
 	});
 	</script>
 	<div ng-app="myAPP" ng-controller="myCtrl">
-		<span>{{table}}</span>
+		<span ng-bind-html="table"></span>
 	</div>
 </body>
 </html>
