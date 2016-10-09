@@ -54,9 +54,12 @@ table tr:nth-child(even) {
 			});
 			$scope.table=$scope.table+"</tbody></table>";
 
-
-			var $popup = $window.open("Popup.html","popup", "width=750,height=500,left=10,top=150");
-			$popup.table = $scope.table;
+window.CertValues = {
+	table:$scope.table
+};
+	window.open("Popup.html","", "width=750,height=500,left=10,top=150","scrollbars=1");
+			//var $popup = $window.open("Popup.html","popup", "width=750,height=500,left=10,top=150");
+			//$popup.table = $scope.table;
 
 		};
 
