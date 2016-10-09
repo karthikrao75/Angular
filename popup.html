@@ -27,9 +27,15 @@ table tr:nth-child(even) {
 	var app=angular.module("myAPP",['ngSanitize']);
 
 	app.controller("myCtrl",function($scope,$window){
-		$scope.table = $window.table;
-
+		$scope.table = window.opener.CertValues.table;
+		var to=window.opener.CertValues.toAddress;
+		var cc=window.opener.CertValues.ccAddress;
+		var subject=window.opener.CertValues.subject;
+		window.onbeforeunload=function(){
+			window.open("mailto:"+to+"?subject="+subject);
+		};
 	});
+
 	</script>
 	<div ng-app="myAPP" ng-controller="myCtrl">
 		<span ng-bind-html="table"></span>
