@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
@@ -55,9 +56,12 @@ table tr:nth-child(even) {
 			$scope.table=$scope.table+"</tbody></table>";
 
 window.CertValues = {
-	table:$scope.table
+	table:$scope.table,
+	toAddress:"karthik.perampalli@gmail.com;srikanth.perampalli@gmail.com",
+	ccAddress:"karthik.perampalli7@gmail.com",
+	subject:"Incident report"
 };
-	window.open("Popup.html","", "width=750,height=500,left=10,top=150","scrollbars=1");
+	window.open("Popup.html","report", "width=750,height=500,left=10,top=150,scrollbars=yes,status=yes,resizable=yes");
 			//var $popup = $window.open("Popup.html","popup", "width=750,height=500,left=10,top=150");
 			//$popup.table = $scope.table;
 
