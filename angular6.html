@@ -1,0 +1,54 @@
+  <!DOCTYPE html>
+  <html lang="en-US">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <body>
+  <div ng-app="myApp" ng-controller="myCon">
+
+    <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>likes</th>
+            <th>dislikes</th>
+            <th>Like/DisLike</th>
+          </tr>
+        </thead>
+        <tbody>
+      <tr ng-repeat="technology in technologies">
+        <td>{{technology.name}}</td>
+        <td>{{technology.likes}}</td>
+        <td>{{technology.dislikes}}</td>
+        <td>
+          <input type="button" name="Like" value="Like" ng-click="incrementlike(technology)">
+          <input type="button" name="disLike" value="DisLike" ng-click="incrementdislike(technology)">
+        </td>
+      </tr>
+      </tbody>
+      </table>
+
+  </div>
+  <script>
+  var app=angular.module("myApp",[]);
+
+  app.controller("myCon",function($scope){
+
+      var technologies=[
+
+      {name:"Java",likes:0,dislikes:0},
+      {name:"SQL",likes:0,dislikes:0},
+      {name:"JS",likes:0,dislikes:0}
+      ]
+
+      $scope.technologies=technologies;
+
+      $scope.incrementlike=function(technology){
+        technology.likes++;
+      }
+
+      $scope.incrementdislike=function(technology){
+        technology.dislikes++;
+      }
+
+  })
+  </script>
+  </body>

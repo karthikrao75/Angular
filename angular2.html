@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCon">
+
+  {{message}}
+  <br></br>
+  <span ng-bind="Employee.firstName"></span>
+  <br></br>
+{{Employee.firstName+Employee.lastName}}
+<br></br>
+
+</div>
+<script>
+var app=angular.module("myApp",[]);
+
+app.controller("myCon",function($scope){
+  $scope.message="Hi welcome to angularJS project";
+
+  var employee={
+    firstName:'karthik ',
+    lastName:'R Rao',
+    gender:'Male',
+    photo:'C:/Users/Srikanth Rao/Desktop/passportPhoto.jpg'
+  }
+  $scope.Employee=employee;
+
+})
+</script>
+</body>

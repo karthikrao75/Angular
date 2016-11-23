@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCon">
+
+  <!--filter sorting-filter -->
+  <br /><br />
+  Search Table:<input type="text"  placeholder="search students" ng-model="searchText" />
+  <br />
+  <br />
+<!--search name column:<input type="text" name="search" ng-model="searchText.name"> -->
+<br />
+  <table border="1px solid black">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr ng-repeat="student in students|filter:searchText">
+      <td>{{student.name|uppercase}}</td>
+      <td>{{student.DOB|date:"dd/MMM/yy"}}</td>
+      <td>{{student.gender|lowercase}}</td>
+      <td>{{student.salary|currency:'@':1}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>
+<script>
+var app=angular.module("myApp",[]);
+
+app.controller("myCon",function($scope){
+  var students=[
+    {name:'Ben',DOB:new Date('November 23,1980'),gender:'Male',salary:'55500.745'},
+    {name:'jen',DOB:new Date('September 03,1980'),gender:'female',salary:'6700.5667'},
+    {name:'Den',DOB:new Date('January 13,1981'),gender:'Male',salary:'5500.45'}
+  ];
+
+    $scope.students=students;
+
+})
+</script>
+</body>

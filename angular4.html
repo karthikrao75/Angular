@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCon">
+
+  <table border="1px solid black">
+    <thead >
+    <tr >
+      <th ng-repeat="(key,value) in users[0]">{{key}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in users">
+      <td>{{user.Name}}</td>
+      <td>{{user.phonenumber}}</td>
+      <td>{{user.gender}}</td>
+    </tr>
+  </tbody>
+  </table>
+<br></br>
+
+</div>
+<script>
+var app=angular.module("myApp",[]);
+
+app.controller("myCon",function($scope){
+  var users=[
+    {Name:"srikanth",phonenumber:"9723234412",gender:"Male"},
+    {Name:"ramesh rao",phonenumber:"9591517440",gender:"Male"},
+    {Name:"padmini",phonenumber:"4342344344",gender:"female"},
+    {Name:"karthik",phonenumber:"9723234442",gender:"Male"}
+  ];
+  $scope.users=users;
+
+})
+</script>
+</body>

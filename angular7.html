@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCon">
+
+  <!--Filters -->
+
+  <br></br>
+  {{message|lowercase}}
+  <br></br>
+  {{message|uppercase}}
+
+  <input type="number" step="1",min="0",max="3" ng-model='rowlimit'/>
+
+  <table border="1px solid black">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr ng-repeat="student in students|limitTo:rowlimit">
+      <td>{{student.name|uppercase}}</td>
+      <td>{{student.DOB|date:"dd/MMM/yy"}}</td>
+      <td>{{student.gender|lowercase}}</td>
+      <td>{{student.salary|currency:'@':1}}</td>
+    </tr>
+    </tbody>
+    </table>
+    <br></br>
+</div>
+<script>
+var app=angular.module("myApp",[]);
+$scope.message="Hi welcome to angularJS project";
+app.controller("myCon",function($scope){
+
+  var students=[
+    {name:'Ben',DOB:new Date('November 23,1980'),gender:'Male',salary:'55500.745'},
+    {name:'jen',DOB:new Date('September 03,1980'),gender:'female',salary:'6700.5667'},
+    {name:'Den',DOB:new Date('January 13,1981'),gender:'Male',salary:'5500.45'}
+  ];
+
+  $scope.students=students;
+  $scope.rowlimit=3;
+
+})
+</script>
+</body>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCon">
+
+
+  <table border="1px solid black">
+      <tbody>
+  <tr >
+      <td>Input string to transform</td>
+      <td><input type="text" ng-model="input" /></td>
+    </tr>
+    <tr >
+        <td>Transformed string</td>
+        <td><input type="text" ng-model="output" /></td>
+      </tr>
+      <tr >
+          <td>Transform string</td>
+          <td><input type="button" value="Transform" ng-click="transformString(input)" /></td>
+        </tr>
+    </tbody>
+  </table>
+
+
+</div>
+<script>
+var app=angular.module("myApp",[]);
+
+app.controller("myCon",function($scope,stringService){
+  var students=[
+    {name:'Ben',DOB:new Date('November 23,1980'),gender:'Male',salary:'55500.745'},
+    {name:'jen',DOB:new Date('September 03,1980'),gender:'female',salary:'6700.5667'},
+    {name:'Den',DOB:new Date('January 13,1981'),gender:'Male',salary:'5500.45'}
+  ];
+
+    $scope.students=students;
+    //custom service controller method
+    $scope.transformString=function(input){
+      $scope.output=stringService.processString(input);
+    }
+})
+
+//custom service
+app.factory("stringService",function(){
+return{
+  processString:function(input){
+
+    if (!input){
+
+      return input;
+    }
+    var output="";
+    for(var i=0;i<input.length;i++){
+
+      if(i>0 && input[i]==input[i].toUpperCase()){
+        output=output+" ";
+      }
+      output=output+input[i];
+
+    }
+    return output;
+  }
+}
+
+});
+</script>
+</body>

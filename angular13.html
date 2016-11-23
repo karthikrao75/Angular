@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCon">
+
+  <!-- ng-hide and ng -show on salary column-->
+  <input type="checkbox" ng-model="hideSalary" />Hide Salary using ng-Hide
+  <table border="1px solid black">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th ng-hide="hideSalary">Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr ng-repeat="student in students">
+      <td>{{student.name}}</td>
+      <td>{{student.DOB}}</td>
+      <td>{{student.gender}}</td>
+      <td ng-hide="hideSalary">{{student.salary}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <input type="checkbox" ng-model="hideSalary1" />Hide Salary using ng-show
+  <table border="1px solid black">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th ng-show="!hideSalary1">Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr ng-repeat="student in students">
+      <td>{{student.name}}</td>
+      <td>{{student.DOB}}</td>
+      <td>{{student.gender}}</td>
+      <td ng-show="!hideSalary1">{{student.salary}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <input type="checkbox" ng-model="hideSalary2" />mask and un-mask salary
+  <table border="1px solid black">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr ng-repeat="student in students">
+      <td>{{student.name}}</td>
+      <td>{{student.DOB}}</td>
+      <td>{{student.gender}}</td>
+      <td ng-hide="hideSalary2">{{student.salary}}</td>
+      <td ng-show="hideSalary2">####</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>
+<script>
+var app=angular.module("myApp",[]);
+
+app.controller("myCon",function($scope){
+  var students=[
+    {name:'Ben',DOB:new Date('November 23,1980'),gender:'Male',salary:'55500.745'},
+    {name:'jen',DOB:new Date('September 03,1980'),gender:'female',salary:'6700.5667'},
+    {name:'Den',DOB:new Date('January 13,1981'),gender:'Male',salary:'5500.45'}
+  ];
+
+    $scope.students=students;
+  
+})
+</script>
+</body>

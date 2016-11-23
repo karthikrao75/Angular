@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCon">
+
+  <!--<img src="{{Employee.photo}}" /> this line will give 404 error at first and then it will load image-->
+  <img ng-src="{{Employee.photo}}" />
+<br></br>
+<input type="text" ng-model="textmessage"/>
+<br></br>
+{{textmessage}}
+</div>
+<script>
+var app=angular.module("myApp",[]);
+
+app.controller("myCon",function($scope){
+  $scope.message="Hi welcome to angularJS project";
+
+  var employee={
+    firstName:'karthik ',
+    lastName:'R Rao',
+    gender:'Male',
+    photo:'C:/Users/Srikanth Rao/Desktop/passportPhoto.jpg'
+  }
+  $scope.Employee=employee;
+
+})
+</script>
+</body>

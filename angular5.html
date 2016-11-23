@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCon">
+
+  <br></br>
+
+
+  <ul>
+    <li ng-repeat="country in countries" ng-init="pindex=$index">
+      {{country.name}}
+      <ul>
+        <li ng-repeat="city in country.cities">
+    <!--    {{ $parent.$index}} {{$index}} {{city.name}} -->
+    {{pindex}} {{$index}} {{city.name}}
+        </li>
+        </ul>
+      </li>
+  </ul>
+
+<br></br>
+
+</div>
+<script>
+var app=angular.module("myApp",[]);
+
+app.controller("myCon",function($scope){
+  var countries=[
+    {
+      name:'Uk',
+      cities:[
+        {name:'london'},
+        {name:'manchester'},
+        {name:'birmingham'}
+      ]
+    },
+    {
+      name:'India',
+      cities:[
+        {name:'bengaluru'},
+        {name:'mangaluru'},
+        {name:'udupi'}
+      ]
+    }
+
+  ]
+  $scope.countries=countries;
+
+})
+</script>
+</body>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCon">
+
+  <button id="top" ng-click="scrollTo('bottom')">Go to bottom of Page </button>
+
+<p>Angular JS[edit]
+
+Architecture of an Angular 2 application. The main building blocks are modules, components, templates, metadata, data binding, directives, services and dependency injection.
+AngularJS is built on the belief that declarative programming should be used to create user interfaces and connect software components, while imperative programming is better suited to defining an application's business logic.[4] The framework adapts and extends traditional HTML to present dynamic content through two-way data-binding that allows for the automatic synchronization of models and views. As a result, AngularJS de-emphasizes explicit DOM manipulation with the goal of improving testability and performance.
+
+AngularJS's design goals include:
+
+to decouple DOM manipulation from application logic. The difficulty of this is dramatically affected by the way the code is structured.
+to decouple the client side of an application from the server side. This allows development work to progress in parallel, and allows for reuse of both sides.
+to provide structure for the journey of building an application: from designing the UI, through writing the business logic, to testing.
+Angular implements the MVC pattern to separate presentation, data, and logic components.[5] Using dependency injection, Angular brings traditionally server-side services, such as view-dependent controllers, to client-side web applications. Consequently, much of the burden on the server can be reduced.
+
+Scope[edit]
+Angular uses the term "scope" in a manner akin to the fundamentals of computer science.
+
+Scope in computer science describes when in the program a particular binding is valid. The ECMA-262 specification defines scope as: a lexical environment in which a Function object is executed in client-side web scripts;[6] akin to how scope is defined in lambda calculus.[7]
+
+As a part of the "MVC" architecture, the scope forms the "Model", and all variables defined in the scope can be accessed by the "View" as well as the "Controller". The scope behaves as a glue and binds the "View" and the "Controller".
+
+In Angular, "scope" is a certain kind of object[8] that itself can be in scope or out of scope in any given part of the program, following the usual rules of variable scope in JavaScript like any other object.[9] When the term "scope" is used below, it refers to the Angular scope object and not the scope of a name binding. Angular is easy way to bind data in html DOM.
+
+Bootstrap[edit]
+The tasks performed by the AngularJS bootstrapper occur in three phases[10] after the DOM has been loaded:
+
+Creation of a new Injector
+Compilation of the directives that decorate the DOM
+Linking of all directives to scope
+AngularJS directives allow the developer to specify custom and reusable HTML-like elements and attributes that define data bindings and the behavior of presentation components. Some of the most commonly used directives are:
+
+ng-app
+Declares the root element of an AngularJS application, under which directives can be used to declare bindings and define behavior.
+ng-bind
+Sets the text of a DOM element to the value of an expression. For example, <span ng-bind="name"></span> displays the value of ‘name’ inside the span element. Any change to the variable ‘name’ in the application's scope reflect instantly in the DOM.
+ng-model
+Similar to ng-bind, but establishes a two-way data binding between the view and the scope.
+ng-model-options
+Provides tuning for how model updates are done.
+ng-class
+Lets class attributes be dynamically loaded.
+ng-controller
+Specifies a JavaScript controller class that evaluates HTML expressions.
+ng-repeat
+Instantiate an element once per item from a collection.
+ng-show & ng-hide
+Conditionally show or hide an element, depending on the value of a boolean expression. Show and hide is achieved by setting the CSS display style.
+ng-switch
+Conditionally instantiate one template from a set of choices, depending on the value of a selection expression.
+ng-view
+The base directive responsible for handling routes[11] that resolve JSON before rendering templates driven by specified controllers.
+ng-if
+Basic if statement directive that allow to show the following element if the conditions are true. When the condition is false, the element is removed from the DOM. When true, a clone of the compiled element is re-inserted.
+ng-aria
+A module for accessibility support of common ARIA attributes.
+ng-animate
+A module provides support for JavaScript, CSS3 transition and CSS3 keyframe animation hooks within existing core and custom directives.
+Since ng-* attributes are not valid in HTML specifications, data-ng-* can also be used as a prefix. For example, both ng-app and data-ng-app are valid in AngularJS.
+
+Two-way data binding[edit]
+AngularJS' two-way data binding is its most notable feature, largely relieving the server backend of templating responsibilities. Instead, templates are rendered in plain HTML according to data contained in a scope defined in the model. The $scope service in Angular detects changes to the model section and modifies HTML expressions in the view via a controller. Likewise, any alterations to the view are reflected in the model. This circumvents the need to actively manipulate the DOM and encourages bootstrapping and rapid prototyping of web applications.[12] AngularJS detects changes in models by comparing the current values with values stored earlier in a process of dirty-checking, unlike Ember.js and Backbone.js that trigger listeners when the model values are changed.[13]
+
+Development history[edit]
+AngularJS was originally developed in 2009 by Miško Hevery[14] at Brat Tech LLC[15] as the software behind an online JSON storage service, that would have been priced by the megabyte, for easy-to-make applications for the enterprise. This venture was located at the web domain "GetAngular.com",[15] and had a few subscribers, before the two decided to abandon the business idea and release Angular as an open-source library.
+
+Releases[edit]
+Angular 1[edit]
+The current stable release of AngularJS is 1.5.8.[16]
+
+Angular 2[edit]
+AngularJS 2.0 was announced at the ng-Europe conference 22-23. September 2014.[17] The drastic changes in the 2.0 version created considerable controversy among developers.[18] On April 30, 2015, the AngularJS developers announced that Angular 2 moved from Alpha to Developer Preview.[19] AngularJS 2 can be downloaded from the official website. Angular 2 moved to Beta in December 2015,[20] and the first release candidate was published in May 2016.[21] The final version was released on September 14, 2016.
+
+Angular 2 is not a version upgrade, but a complete rewrite. The primary differences in Angular 2 over Angular 1 are:[22]
+
+Mobile development – desktop development is much easier when mobile performance issues are handled first
+Modularity – much core functionality has moved to modules, producing a lighter, faster core
+Modern browsers only – reducing the need for browser compatibility workarounds
+Angular 2 recommends the use of Microsoft's TypeScript language, which introduces the following improvements:
+Class-based Object Oriented Programming
+Static Typing
+Generics
+Lambdas
+TypeScript is a superset of ECMAScript 6, and is backwards compatible with ECMAScript 5 (i.e.: JavaScript). Angular 2 also includes the benefits of ES6:
+Iterators
+For/Of loops
+Python-style generators
+Reflection
+Improved dependency injection – bindings make it possible for dependencies to be named
+Dynamic loadin</p>
+
+
+<button id="bottom" ng-click="scrollTo('top')">Go to top of Page </button>
+</div>
+<script>
+var app=angular.module("myApp",[]);
+
+app.controller("myCon",function($scope,$location,$anchorScroll){
+  //anchor scrolling
+    $scope.scrollTo=function(scrollingLocation){
+      console.log(scrollingLocation);
+      $location.hash(scrollingLocation);
+      $anchorScroll.yOffset=30; //will provide some marginal space
+      $anchorScroll();
+    }
+
+})
+</script>
+</body>

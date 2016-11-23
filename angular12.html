@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCon">
+  <!-- custom filter on gender column -->
+
+    <table border="1px solid black">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tbody>
+    <tr ng-repeat="student in students">
+        <td>{{student.name}}</td>
+        <td>{{student.DOB}}</td>
+        <td>{{student.gender|gender}}</td>
+        <td>{{student.salary}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+</div>
+<script>
+var app=angular.module("myApp",[]);
+
+app.controller("myCon",function($scope){
+  var students=[
+    {name:'Ben',DOB:new Date('November 23,1980'),gender:'Male',salary:'55500.745'},
+    {name:'jen',DOB:new Date('September 03,1980'),gender:'female',salary:'6700.5667'},
+    {name:'Den',DOB:new Date('January 13,1981'),gender:'Male',salary:'5500.45'}
+  ];
+
+    $scope.students=students;
+
+})
+
+
+//custom filter in angularJS
+app.filter("gender",function(){
+  return function(gender){
+    switch (gender) {
+      case "Male": return 1;
+
+        break;
+        case "female": return 2;
+
+          break;
+
+    }
+}
+})
+</script>
+</body>
